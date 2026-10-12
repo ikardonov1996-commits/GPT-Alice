@@ -103,6 +103,7 @@ async function handleAlice(req) {
   const utterance = (req.request?.original_utterance || req.request?.command || '').trim();
   const command = (req.request?.command || '').toLowerCase().trim();
   const session = getSession(req.session?.session_id || 'default');
+  console.log(`[alice] new=${!!req.session?.new} client=${req.meta?.client_id || "?"} utterance="${utterance}"`);
 
   // Проверочный запрос от Яндекса.
   if (utterance === 'ping') return { text: 'pong' };
